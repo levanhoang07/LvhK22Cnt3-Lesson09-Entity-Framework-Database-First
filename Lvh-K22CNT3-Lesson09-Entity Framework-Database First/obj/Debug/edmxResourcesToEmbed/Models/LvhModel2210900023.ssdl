@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LvhK22CNT3Lesson09DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LvhK22CNT3Lesson09Db.dbo.lvhKetqua' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="lvhKetqua">
+    <Key>
+      <PropertyRef Name="LvhMaSV" />
+      <PropertyRef Name="LvhMaMH" />
+    </Key>
+    <Property Name="LvhMaSV" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LvhMaMH" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LvhDiem" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="lvhKhoa">
+    <Key>
+      <PropertyRef Name="LvhMaKH" />
+    </Key>
+    <Property Name="LvhMaKH" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LvhTenKH" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="lvhMonHoc">
+    <Key>
+      <PropertyRef Name="LvhMaMH" />
+    </Key>
+    <Property Name="LvhMaMH" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="lvhTenMH" Type="nchar" MaxLength="10" />
+    <Property Name="LvhSoTiet" Type="int" />
+  </EntityType>
+  <EntityType Name="lvhSinhVien">
+    <Key>
+      <PropertyRef Name="LvhMaSV" />
+    </Key>
+    <Property Name="LvhMaSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LvhHoSV" Type="nvarchar" MaxLength="50" />
+    <Property Name="LvhTenSV" Type="nvarchar" MaxLength="50" />
+    <Property Name="LvhNgaySinh" Type="date" />
+    <Property Name="LvhPhai" Type="bit" />
+    <Property Name="LvhNoiSinh" Type="nchar" MaxLength="10" />
+    <Property Name="LvhMaKH" Type="nchar" MaxLength="10" />
+    <Property Name="LvhHocBong" Type="nvarchar(max)" />
+    <Property Name="LvhDiemTrungBinh" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_lvhSinhVien_lvhKhoa">
+    <End Role="lvhKhoa" Type="Self.lvhKhoa" Multiplicity="0..1" />
+    <End Role="lvhSinhVien" Type="Self.lvhSinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lvhKhoa">
+        <PropertyRef Name="LvhMaKH" />
+      </Principal>
+      <Dependent Role="lvhSinhVien">
+        <PropertyRef Name="LvhMaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LvhK22CNT3Lesson09DbModelStoreContainer">
+    <EntitySet Name="lvhKhoa" EntityType="Self.lvhKhoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lvhMonHoc" EntityType="Self.lvhMonHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lvhSinhVien" EntityType="Self.lvhSinhVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lvhKetqua" EntityType="Self.lvhKetqua" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [lvhKetqua].[LvhMaSV] AS [LvhMaSV], 
+    [lvhKetqua].[LvhMaMH] AS [LvhMaMH], 
+    [lvhKetqua].[LvhDiem] AS [LvhDiem]
+    FROM [dbo].[lvhKetqua] AS [lvhKetqua]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_lvhSinhVien_lvhKhoa" Association="Self.FK_lvhSinhVien_lvhKhoa">
+      <End Role="lvhKhoa" EntitySet="lvhKhoa" />
+      <End Role="lvhSinhVien" EntitySet="lvhSinhVien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LvhK22CNT3Lesson09DbModelStoreContainer" CdmEntityContainer="LvhK22CNT3Lesson09DbEntities">
+    <EntitySetMapping Name="lvhKhoas">
+      <EntityTypeMapping TypeName="LvhK22CNT3Lesson09DbModel.lvhKhoa">
+        <MappingFragment StoreEntitySet="lvhKhoa">
+          <ScalarProperty Name="LvhMaKH" ColumnName="LvhMaKH" />
+          <ScalarProperty Name="LvhTenKH" ColumnName="LvhTenKH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lvhMonHocs">
+      <EntityTypeMapping TypeName="LvhK22CNT3Lesson09DbModel.lvhMonHoc">
+        <MappingFragment StoreEntitySet="lvhMonHoc">
+          <ScalarProperty Name="LvhMaMH" ColumnName="LvhMaMH" />
+          <ScalarProperty Name="lvhTenMH" ColumnName="lvhTenMH" />
+          <ScalarProperty Name="LvhSoTiet" ColumnName="LvhSoTiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lvhSinhViens">
+      <EntityTypeMapping TypeName="LvhK22CNT3Lesson09DbModel.lvhSinhVien">
+        <MappingFragment StoreEntitySet="lvhSinhVien">
+          <ScalarProperty Name="LvhMaSV" ColumnName="LvhMaSV" />
+          <ScalarProperty Name="LvhHoSV" ColumnName="LvhHoSV" />
+          <ScalarProperty Name="LvhTenSV" ColumnName="LvhTenSV" />
+          <ScalarProperty Name="LvhNgaySinh" ColumnName="LvhNgaySinh" />
+          <ScalarProperty Name="LvhPhai" ColumnName="LvhPhai" />
+          <ScalarProperty Name="LvhNoiSinh" ColumnName="LvhNoiSinh" />
+          <ScalarProperty Name="LvhMaKH" ColumnName="LvhMaKH" />
+          <ScalarProperty Name="LvhHocBong" ColumnName="LvhHocBong" />
+          <ScalarProperty Name="LvhDiemTrungBinh" ColumnName="LvhDiemTrungBinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lvhKetquas">
+      <EntityTypeMapping TypeName="LvhK22CNT3Lesson09DbModel.lvhKetqua">
+        <MappingFragment StoreEntitySet="lvhKetqua">
+          <ScalarProperty Name="LvhMaSV" ColumnName="LvhMaSV" />
+          <ScalarProperty Name="LvhMaMH" ColumnName="LvhMaMH" />
+          <ScalarProperty Name="LvhDiem" ColumnName="LvhDiem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LvhK22CNT3Lesson09DbModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

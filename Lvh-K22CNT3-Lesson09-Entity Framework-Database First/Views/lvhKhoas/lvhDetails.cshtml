@@ -1,0 +1,26 @@
+﻿@model Lvh_K22CNT3_Lesson09_Entity_Framework_Database_First.Models.lvhKhoa
+
+@{
+    ViewBag.Title = "lvhDetails";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lvhKhoa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LvhTenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LvhTenKH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("lvhEdit", "lvhEdit", new { id = Model.LvhMaKH }) |
+    @Html.ActionLink("Back to List", "lvhIndex")
+</p>

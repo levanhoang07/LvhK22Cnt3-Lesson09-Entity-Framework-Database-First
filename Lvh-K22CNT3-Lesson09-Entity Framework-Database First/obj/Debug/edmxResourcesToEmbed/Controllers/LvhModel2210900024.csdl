@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LvhK22CNT3Lesson09DbModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="lvhKhoa">
+    <Key>
+      <PropertyRef Name="LvhMaKH" />
+    </Key>
+    <Property Name="LvhMaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LvhTenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="lvhSinhViens" Relationship="Self.FK_lvhSinhVien_lvhKhoa" FromRole="lvhKhoa" ToRole="lvhSinhVien" />
+  </EntityType>
+  <EntityType Name="lvhMonHoc">
+    <Key>
+      <PropertyRef Name="LvhMaMH" />
+    </Key>
+    <Property Name="LvhMaMH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="lvhTenMH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LvhSoTiet" Type="Int32" />
+  </EntityType>
+  <EntityType Name="lvhSinhVien">
+    <Key>
+      <PropertyRef Name="LvhMaSV" />
+    </Key>
+    <Property Name="LvhMaSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LvhHoSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LvhTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LvhNgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="LvhPhai" Type="Boolean" />
+    <Property Name="LvhNoiSinh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LvhMaKH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LvhHocBong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LvhDiemTrungBinh" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="lvhKhoa" Relationship="Self.FK_lvhSinhVien_lvhKhoa" FromRole="lvhSinhVien" ToRole="lvhKhoa" />
+  </EntityType>
+  <EntityType Name="lvhKetqua">
+    <Key>
+      <PropertyRef Name="LvhMaSV" />
+      <PropertyRef Name="LvhMaMH" />
+    </Key>
+    <Property Name="LvhMaSV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LvhMaMH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LvhDiem" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_lvhSinhVien_lvhKhoa">
+    <End Role="lvhKhoa" Type="Self.lvhKhoa" Multiplicity="0..1" />
+    <End Role="lvhSinhVien" Type="Self.lvhSinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lvhKhoa">
+        <PropertyRef Name="LvhMaKH" />
+      </Principal>
+      <Dependent Role="lvhSinhVien">
+        <PropertyRef Name="LvhMaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LvhK22CNT3Lesson09DbEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="lvhKhoas" EntityType="Self.lvhKhoa" />
+    <EntitySet Name="lvhMonHocs" EntityType="Self.lvhMonHoc" />
+    <EntitySet Name="lvhSinhViens" EntityType="Self.lvhSinhVien" />
+    <EntitySet Name="lvhKetquas" EntityType="Self.lvhKetqua" />
+    <AssociationSet Name="FK_lvhSinhVien_lvhKhoa" Association="Self.FK_lvhSinhVien_lvhKhoa">
+      <End Role="lvhKhoa" EntitySet="lvhKhoas" />
+      <End Role="lvhSinhVien" EntitySet="lvhSinhViens" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
